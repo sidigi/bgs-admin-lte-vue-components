@@ -1,23 +1,17 @@
 import Vue from "vue";
-import upperFirst from "lodash/upperFirst";
-import camelCase from "lodash/camelCase";
 
-const requireComponent = require.context(
-  "./components/employee",
-  false,
-  /Base[A-Z]\w+\.(vue|js)$/
-);
+import CardWidget from "./components/employee/CardWidget";
+import Employees from "./components/employee/ListWrapper";
+import EmployeeList from "./components/employee/List";
 
-requireComponent.keys().forEach(fileName => {
-  const componentConfig = requireComponent(fileName);
-  const componentName = upperFirst(
-    camelCase(
-      fileName
-        .split("/")
-        .pop()
-        .replace(/\.\w+$/, "")
-    )
-  );
+Vue.component("bgs-employee-card-widget", CardWidget);
+Vue.component("bgs-employees", Employees);
+Vue.component("bgs-employee-list", EmployeeList);
 
-  Vue.component(componentName, componentConfig.default || componentConfig);
-});
+Vue.prototype.$bgsComponentsEventBus = new Vue();
+
+export default {
+  "bgs-employee-card-widget": CardWidget,
+  "bgs-employees": Employees,
+  "bgs-employee-list": EmployeeList
+};
