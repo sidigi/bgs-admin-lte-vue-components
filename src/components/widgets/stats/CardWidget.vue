@@ -1,18 +1,21 @@
 <template>
-  <div class="employee-statistic-block">
-    <div class="info-box info-box-bgs info-box-no-icon">
-      <div class="info-box-toolbar">
-        <slot name="buttons"></slot>
-      </div>
+  <div>
+    <div class="employee-statistic-block">
+      <slot name="employee-card"></slot>
+      <div class="info-box info-box-bgs info-box-no-icon">
+        <div class="info-box-toolbar">
+          <slot name="buttons"></slot>
+        </div>
 
-      <span class="info-box-icon" :class="lineClass"></span>
+        <span class="info-box-icon" :class="lineClass"></span>
 
-      <div class="info-box-content">
-        <span class="info-box-text" v-once v-if="header">{{ header }}</span>
-        <span class="info-box-number" v-once v-if="subheader">{{ subheader }}</span>
+        <div class="info-box-content">
+          <span class="info-box-text" v-once v-if="header">{{ header }}</span>
+          <span class="info-box-number" v-once v-if="subheader">{{ subheader }}</span>
 
-        <div class="info-box-custom-content">
-          <slot></slot>
+          <div class="info-box-custom-content">
+            <slot></slot>
+          </div>
         </div>
       </div>
     </div>

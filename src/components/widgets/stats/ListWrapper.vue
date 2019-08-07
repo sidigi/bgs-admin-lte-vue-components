@@ -1,13 +1,13 @@
 <template>
   <div class="employees-list">
     <template v-for="item in items">
-      <bgs-employee-list :key="item.id" :item="item"></bgs-employee-list>
+      <bgs-widget-stats-employee-list :key="item.id" :item="item"></bgs-widget-stats-employee-list>
     </template>
   </div>
 </template>
 
 <script>
-import BgsEmployeeList from "./List";
+import BgsWidgetStatsEmployeeList from "./List";
 
 export default {
   props: {
@@ -18,7 +18,7 @@ export default {
   },
 
   components: {
-    BgsEmployeeList
+    BgsWidgetStatsEmployeeList
   }
 };
 </script>

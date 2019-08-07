@@ -1,6 +1,6 @@
 <template>
   <div>
-    <bgs-employee-info
+    <bgs-widget-stats-employee-info
       v-if="item.items"
       :isParent="!! item.items.length"
       :avatar="item.avatar"
@@ -11,15 +11,15 @@
       :active="item.active"
       @item-collapse="collapse"
       @row-item-click="itemClick"
-    ></bgs-employee-info>
+    ></bgs-widget-stats-employee-info>
 
     <transition v-if="item.items" name="fadeHeight" mode="out-in">
       <div class="employees-list" v-show="item.collapsed">
-        <bgs-employee-list v-for="item in item.items" :key="item.id" :item="item"></bgs-employee-list>
+        <bgs-widget-stats-employee-list v-for="item in item.items" :key="item.id" :item="item"></bgs-widget-stats-employee-list>
       </div>
     </transition>
 
-    <bgs-employee-info
+    <bgs-widget-stats-employee-info
       v-else
       :avatar="item.avatar"
       :name="item.name"
@@ -27,23 +27,23 @@
       :collapsed_data="item.collapsed_data"
       :active="item.active"
       @row-item-click="itemClick"
-    ></bgs-employee-info>
+    ></bgs-widget-stats-employee-info>
 
     <div class="employees-list-offline" v-if="item.disabledItems">
       <template v-for="disabledItem in item.disabledItems">
-        <bgs-employee-disabled
+        <bgs-widget-stats-employee-disabled
           :key="disabledItem.id"
           :avatar="disabledItem.avatar"
           :name="disabledItem.name"
-        ></bgs-employee-disabled>
+        ></bgs-widget-stats-employee-disabled>
       </template>
     </div>
   </div>
 </template>
 
 <script>
-import BgsEmployeeInfo from "./RowInfo";
-import BgsEmployeeDisabled from "./DisabledRow";
+import BgsWidgetStatsEmployeeInfo from "./RowInfo";
+import BgsWidgetStatsEmployeeDisabled from "./DisabledRow";
 
 export default {
   props: {
@@ -54,8 +54,8 @@ export default {
   },
 
   components: {
-    BgsEmployeeInfo,
-    BgsEmployeeDisabled
+    BgsWidgetStatsEmployeeInfo,
+    BgsWidgetStatsEmployeeDisabled
   },
 
   methods: {

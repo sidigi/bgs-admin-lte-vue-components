@@ -1,12 +1,29 @@
 <template>
   <div id="app">
-    <bgs-employee-card-widget
+    <bgs-widget-stats-card
       header="header"
       subheader="subheader"
       class="col-xs-12 col-sm-4 col-md-3"
       @bgs-widget-stats-item-click="itemClick"
       @bgs-widget-stats-collapse="collapse"
     >
+      <template v-slot:employee-card>
+        <bgs-widget-stats-employee-card
+          :header="30001"
+          icon="eye"
+          :link="{href: 'link'}"
+          background-color="bg-maroon"
+          @bgs-widget-stats-employee-card-click="clickCard"
+        >
+          <template v-slot:subheader>
+            <p>
+              Last modified 2 month ago
+              <br />on LNG
+            </p>
+          </template>
+        </bgs-widget-stats-employee-card>
+      </template>
+
       <template v-slot:buttons>
         <span
           role="button"
@@ -32,9 +49,9 @@
       </template>
 
       <template>
-        <bgs-employees :items="items"></bgs-employees>
+        <bgs-widget-stats-employees :items="items"></bgs-widget-stats-employees>
       </template>
-    </bgs-employee-card-widget>
+    </bgs-widget-stats-card>
   </div>
 </template>
 
@@ -130,7 +147,11 @@ export default {
   methods: {
     itemClick(item) {},
 
-    collapse(item) {}
+    collapse(item) {},
+
+    clickCard(e) {
+      e.preventDefault();
+    }
   }
 };
 </script>
