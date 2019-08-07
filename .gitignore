@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-/dist
 /public/plugins/*
 /public/assets/*
 /public/bower_components/*
