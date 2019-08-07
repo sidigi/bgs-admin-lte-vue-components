@@ -15,7 +15,10 @@
         @click.prevent.stop="$emit('row-item-click')"
       ></span>
     </div>
-    <div class="employee-info">{{ data }}</div>
+    <div class="employee-info">
+      <template v-if="hasExpandedData">{{ collapsed_data }}</template>
+      <template v-else>{{ data }}</template>
+    </div>
   </div>
 </template>
 
@@ -42,6 +45,10 @@ export default {
       type: [String, Number],
       default: ""
     },
+    collapsed_data: {
+      type: [String, Number],
+      default: undefined
+    },
     avatar: {
       type: [String],
       default: ""
@@ -49,6 +56,14 @@ export default {
   },
 
   computed: {
+    hasExpandedData() {
+      return (
+        this.isParent &&
+        this.collapsed === true &&
+        this.collapsed_data !== undefined
+      );
+    },
+
     employeeClass() {
       return {
         "employee-inactive": !this.active,
@@ -74,7 +89,7 @@ export default {
 .employee.employee-inactive .employee-photo {
   filter: grayscale(1) opacity(0.6);
 }
-.employee[data-toggle="collapse"] {
+.employee {
   cursor: pointer;
 }
 .employee[data-toggle="collapse"]:before {

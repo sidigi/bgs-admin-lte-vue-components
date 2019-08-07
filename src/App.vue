@@ -4,8 +4,8 @@
       header="header"
       subheader="subheader"
       class="col-xs-12 col-sm-4 col-md-3"
-      @bgs-widget-item-click="itemClick"
-      @bgs-widget-collapse="collapse"
+      @bgs-widget-stats-item-click="itemClick"
+      @bgs-widget-stats-collapse="collapse"
     >
       <template v-slot:buttons>
         <span
@@ -53,6 +53,8 @@ export default {
             "https://bitrix.bgs-group.eu/upload/main/aa7/aa70f9667a924257fd12ad71e6b41e9d/foto.jpg",
           name: "Korotkova Olesya",
           data: "Data",
+          collapsed_data: "expanded",
+          other: [1, 2, 3],
           items: [
             {
               id: 2,
@@ -71,6 +73,14 @@ export default {
                 "https://bitrix.bgs-group.eu/upload/main/c9b/c9bb87ac014475a903790c317fb1efc5/MAKJOEIRd9c.jpg",
               name: "Karapetyan Ani",
               data: "text"
+            }
+          ],
+          disabledItems: [
+            {
+              id: 122,
+              avatar:
+                "https://bitrix.bgs-group.eu/upload/main/c9b/c9bb87ac014475a903790c317fb1efc5/MAKJOEIRd9c.jpg",
+              name: "Name"
             }
           ]
         },
@@ -118,9 +128,9 @@ export default {
   },
 
   methods: {
-    itemClick() {},
+    itemClick(item) {},
 
-    collapse() {}
+    collapse(item) {}
   }
 };
 </script>

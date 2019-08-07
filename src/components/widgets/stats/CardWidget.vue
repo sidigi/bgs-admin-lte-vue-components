@@ -37,12 +37,12 @@ export default {
   },
 
   mounted() {
-    this.$bgsComponentsEventBus.$on("_bgs-widget-item-click", payLoad => {
-      this.$emit("bgs-widget-item-click", payLoad);
+    this.$bgsComponentsEventBus.$on("_bgs-widget-stats-item-click", payLoad => {
+      this.$emit("bgs-widget-stats-item-click", payLoad);
     });
 
-    this.$bgsComponentsEventBus.$on("_bgs-widget-collapse", payLoad => {
-      this.$emit("bgs-widget-collapse", payLoad);
+    this.$bgsComponentsEventBus.$on("_bgs-widget-stats-collapse", payLoad => {
+      this.$emit("bgs-widget-stats-collapse", payLoad);
     });
   }
 };

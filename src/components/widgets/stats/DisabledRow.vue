@@ -5,12 +5,17 @@
     :style="`background: url(${avatar}) no-repeat center/cover`"
     data-container="body"
     data-toggle="tooltip"
+    @click.prevent.stop="itemClick"
   ></span>
 </template>
 
 <script>
 export default {
   props: {
+    id: {
+      type: [Number],
+      default: null
+    },
     name: {
       type: [String, Number],
       default: ""
@@ -18,6 +23,16 @@ export default {
     avatar: {
       type: [String],
       default: ""
+    }
+  },
+
+  methods: {
+    itemClick() {
+      this.$bgsComponentsEventBus.$emit("_bgs-widget-stats-item-click", {
+        id: this.id,
+        name: this.name,
+        avatar: this.avatar
+      });
     }
   }
 };
@@ -27,6 +42,7 @@ export default {
 .employee-offline {
   margin: 3px;
   filter: opacity(0.6) grayscale(1);
+  cursor: pointer;
 }
 .icon {
   display: inline-block;

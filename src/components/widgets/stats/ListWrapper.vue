@@ -1,7 +1,7 @@
 <template>
   <div class="employees-list">
     <template v-for="item in items">
-      <bgs-employee-list :key="item.id" :item="item" @item-click="clicked"></bgs-employee-list>
+      <bgs-employee-list :key="item.id" :item="item"></bgs-employee-list>
     </template>
   </div>
 </template>
@@ -14,11 +14,6 @@ export default {
     items: {
       type: Array,
       required: true
-    }
-  },
-  methods: {
-    clicked(value) {
-      this.$emit("employee-click", value);
     }
   },
 

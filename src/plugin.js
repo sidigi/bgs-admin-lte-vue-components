@@ -1,8 +1,8 @@
-import CardWidget from "./components/employee/CardWidget";
-import Employees from "./components/employee/ListWrapper";
-import EmployeeList from "./components/employee/List";
+import CardWidget from "./components/widgets/stats/CardWidget";
+import Employees from "./components/widgets/stats/ListWrapper";
+import EmployeeList from "./components/widgets/stats/List";
 
-const bgsVueUIComponentsAdminLte = {
+const bgsAdminLteVueUIComponents = {
   install(Vue) {
     Vue.component("bgs-employee-card-widget", CardWidget);
     Vue.component("bgs-employees", Employees);
@@ -13,7 +13,7 @@ const bgsVueUIComponentsAdminLte = {
 };
 
 if (typeof window !== "undefined" && window.Vue) {
-  window.bgsVueUIComponentsAdminLte = bgsVueUIComponentsAdminLte;
+  window.bgsAdminLteVueUIComponents = bgsAdminLteVueUIComponents;
 }
 
-export default bgsVueUIComponentsAdminLte;
+export default bgsAdminLteVueUIComponents;

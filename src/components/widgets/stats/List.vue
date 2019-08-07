@@ -6,6 +6,7 @@
       :avatar="item.avatar"
       :name="item.name"
       :data="item.data"
+      :collapsed_data="item.collapsed_data"
       :collapsed="item.collapsed"
       :active="item.active"
       @item-collapse="collapse"
@@ -23,7 +24,9 @@
       :avatar="item.avatar"
       :name="item.name"
       :data="item.data"
+      :collapsed_data="item.collapsed_data"
       :active="item.active"
+      @row-item-click="itemClick"
     ></bgs-employee-info>
 
     <div class="employees-list-offline" v-if="item.disabledItems">
@@ -58,10 +61,17 @@ export default {
   methods: {
     collapse(value) {
       this.item.collapsed = value;
-      this.$bgsComponentsEventBus.$emit("_bgs-widget-collapse", this.item);
+
+      this.$bgsComponentsEventBus.$emit(
+        "_bgs-widget-stats-collapse",
+        this.item
+      );
     },
     itemClick() {
-      this.$bgsComponentsEventBus.$emit("_bgs-widget-item-click", this.item);
+      this.$bgsComponentsEventBus.$emit(
+        "_bgs-widget-stats-item-click",
+        this.item
+      );
     }
   }
 };
