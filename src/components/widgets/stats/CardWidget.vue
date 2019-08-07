@@ -16,6 +16,8 @@
           <div class="info-box-custom-content">
             <slot></slot>
           </div>
+
+          <loader v-if="loader"></loader>
         </div>
       </div>
     </div>
@@ -23,6 +25,8 @@
 </template>
 
 <script>
+import Loader from "../../Loader";
+
 export default {
   props: {
     header: {
@@ -36,7 +40,15 @@ export default {
     lineClass: {
       type: String,
       default: "bg-aqua"
+    },
+    loader: {
+      type: Boolean,
+      default: false
     }
+  },
+
+  components: {
+    Loader
   },
 
   mounted() {

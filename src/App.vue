@@ -3,6 +3,7 @@
     <bgs-widget-stats-card
       header="header"
       subheader="subheader"
+      :loader="loader"
       class="col-xs-12 col-sm-4 col-md-3"
       @bgs-widget-stats-item-click="itemClick"
       @bgs-widget-stats-collapse="collapse"
@@ -12,7 +13,7 @@
           :header="30001"
           icon="eye"
           :link="{href: 'link'}"
-          background-color="bg-maroon"
+          class="bg-maroon"
           @bgs-widget-stats-employee-card-click="clickCard"
         >
           <template v-slot:subheader>
@@ -56,12 +57,38 @@
 </template>
 
 <script>
+import { setTimeout } from "timers";
 export default {
   name: "app",
 
+  mounted() {
+    this.loader = true;
+
+    setTimeout(() => {
+      this.items = this.getItems();
+
+      this.loader = false;
+    }, 5000);
+  },
+
   data() {
     return {
-      items: [
+      loader: false,
+      items: null
+    };
+  },
+
+  methods: {
+    itemClick(item) {},
+
+    collapse(item) {},
+
+    clickCard(e) {
+      e.preventDefault();
+    },
+
+    getItems() {
+      return [
         {
           id: 1,
           active: true,
@@ -140,17 +167,7 @@ export default {
             }
           ]
         }
-      ]
-    };
-  },
-
-  methods: {
-    itemClick(item) {},
-
-    collapse(item) {},
-
-    clickCard(e) {
-      e.preventDefault();
+      ];
     }
   }
 };

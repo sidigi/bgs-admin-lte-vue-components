@@ -1,5 +1,5 @@
 <template>
-  <div class="employees-list">
+  <div class="employees-list" v-if="items && items.length">
     <template v-for="item in items">
       <bgs-widget-stats-employee-list :key="item.id" :item="item"></bgs-widget-stats-employee-list>
     </template>
@@ -12,8 +12,8 @@ import BgsWidgetStatsEmployeeList from "./List";
 export default {
   props: {
     items: {
-      type: Array,
-      required: true
+      type: [Array],
+      default: []
     }
   },
 

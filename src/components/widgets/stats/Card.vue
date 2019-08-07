@@ -1,5 +1,5 @@
 <template>
-  <div class="small-box" :class="backgroundColor">
+  <div class="small-box">
     <div class="inner">
       <h3 v-if="isNumeric(header)">{{header | formatNumber}}</h3>
       <h3 v-else>{{ header }}</h3>
@@ -35,10 +35,6 @@ export default {
           title: "More info"
         };
       }
-    },
-    backgroundColor: {
-      type: [String],
-      default: null
     }
   },
 
