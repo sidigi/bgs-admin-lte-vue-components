@@ -90,6 +90,143 @@
 | -------- | ------------------------------------------------ |
 | items    | Определённого вида массив объектов (сотрудников) |
 
+## Компонент дослежки
+
+```html
+<template>
+  <div id="app">
+    <bgs-widget-payment-by-contract-expire
+      :employees="employees"
+      :loader="loader"
+      :card="card"
+      @bgs-widget-stats-item-click="itemClick"
+      @bgs-widget-stats-collapse="collapse"
+      @bgs-widget-stats-employee-card-click="cardClick"
+      @bgs-widget-stats-refresh="refresh"
+    ></bgs-widget-payment-by-contract-expire>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        card: {
+          header: "header",
+          subheader: "sub",
+          link: { href: "link", title: "title" }
+        },
+        employees: {
+          header: "header",
+          subheader: "sub",
+          items: []
+        },
+        loader: false
+      };
+    },
+
+    async mounted() {
+      await this.load();
+    },
+
+    methods: {
+      itemClick(item) {},
+      collapse(item) {},
+      cardClick(e) {},
+      refresh() {
+        this.load();
+      },
+      load() {
+        this.loader = true;
+
+        setTimeout(() => {
+          this.employees.items = this.getItems();
+
+          this.loader = false;
+        }, 1000);
+      },
+      getItems() {
+        return [
+          {
+            id: 1, // уникальный id
+            active: true, // флаг активности
+            collapsed: false, // показывать развёрнутым (показывать список сотрудников)
+            avatar: "foto.jpg", // Аватарка
+            name: "Name 1", // Имя
+            data: "Data", // Данные для показа
+            collapsed_data: "expanded", // Данные, которые будут показаны при раскрытом списке сотрудников
+            other: [1, 2, 3], // любые другие данные, необязательно other
+            items: [
+              // Вложенные элементы
+              {
+                id: 2,
+                active: false,
+                collapsed: false,
+                avatar: "cb59bc5fefe8bab6abf2fbc2e93eb208/gDAc5YF0mgY.jpg",
+                name: "Name 12",
+                data: "text"
+              },
+              {
+                id: 3,
+                active: true,
+                collapsed: false,
+                avatar: "MAKJOEIRd9c.jpg",
+                name: "Name 13",
+                data: "text"
+              }
+            ],
+            // группа элементов вне иерархии, элементы, которые под чертой
+            disabledItems: [
+              {
+                id: 122, // уникальный id
+                avatar: "MAKJOEIRd9c.jpg", // Аватарка
+                name: "Name" // Имя
+              }
+            ]
+          },
+          {
+            id: 51,
+            active: true,
+            collapsed: false,
+            avatar: "IMG_1402.png",
+            name: "Name 14",
+            data: "data",
+            items: [
+              {
+                id: 52,
+                active: true,
+                collapsed: false,
+                avatar: "%D0%BE%D0%B3.png",
+                name: "Name 15",
+                data: "data",
+                items: [
+                  {
+                    id: 53,
+                    active: true,
+                    collapsed: false,
+                    avatar: "xgFmfkZaEHg.jpg",
+                    name: "Name 152",
+                    data: "data"
+                  },
+                  {
+                    id: 54,
+                    active: false,
+                    collapsed: false,
+                    avatar: "IMG_0257-10-09-18-02-17.JPG",
+                    name: "Name 1ваы",
+                    data: "data"
+                  }
+                ]
+              }
+            ]
+          }
+        ];
+      }
+    }
+  };
+</script>
+```
+
 ## Полный пример
 
 ```html

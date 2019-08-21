@@ -2,7 +2,7 @@
   <div>
     <div class="employee-statistic-block">
       <slot name="employee-card"></slot>
-      <div class="info-box info-box-bgs info-box-no-icon">
+      <div class="info-box info-box-bgs info-box-no-icon" v-if="showTree">
         <div class="info-box-toolbar">
           <slot name="buttons"></slot>
         </div>
@@ -16,10 +16,9 @@
           <div class="info-box-custom-content">
             <slot></slot>
           </div>
-
-          <loader v-if="loader"></loader>
         </div>
       </div>
+      <loader v-if="loader"></loader>
     </div>
   </div>
 </template>
@@ -44,6 +43,10 @@ export default {
     loader: {
       type: Boolean,
       default: false
+    },
+    showTree: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -64,6 +67,10 @@ export default {
 </script>
 
 <style scoped>
+.employee-statistic-block {
+  position: relative;
+  min-height: 90px;
+}
 .info-box {
   position: relative;
 }
