@@ -30,7 +30,7 @@ export default {
       },
       loader: false,
       date: new Date().toISOString().split("T")[0],
-      userId: 23
+      userId: 1
     };
   },
 
@@ -72,6 +72,7 @@ export default {
           if (card) {
             this.card = {
               header: card.value,
+              subheader: "Total overdue sum",
               type: card.value ? "danger" : null
             };
           }

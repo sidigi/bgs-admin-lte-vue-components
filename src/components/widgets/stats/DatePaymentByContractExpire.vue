@@ -55,6 +55,10 @@ export default {
         return ["bg-maroon"];
       }
 
+      if (this.card.type === "warning") {
+        return ["bg-yellow"];
+      }
+
       return ["bg-green"];
     }
   },

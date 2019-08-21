@@ -1751,12 +1751,12 @@ var Card_component = normalizeComponent(
 )
 
 /* harmony default export */ var Card = (Card_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"741fdb3f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/widgets/stats/DatePaymentByContractExpire.vue?vue&type=template&id=4869cdbf&
-var DatePaymentByContractExpirevue_type_template_id_4869cdbf_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('bgs-widget-stats-card',{staticClass:"col-xs-12 col-sm-4 col-md-3",attrs:{"showTree":_vm.showTree,"header":_vm.employees.header,"subheader":_vm.employees.subheader,"loader":_vm.loader},scopedSlots:_vm._u([(_vm.card && !_vm.loader)?{key:"employee-card",fn:function(){return [_c('bgs-widget-stats-employee-card',{class:_vm.cardClass,attrs:{"header":_vm.card.header,"link":_vm.card.link},scopedSlots:_vm._u([(_vm.card.subheader)?{key:"subheader",fn:function(){return [_c('p',[_vm._v(_vm._s(_vm.card.subheader))])]},proxy:true}:null],null,true)})]},proxy:true}:null,{key:"buttons",fn:function(){return [_c('span',{staticClass:"info-box-toolbar-button hover-translucent employee-statistics-refresh-button",attrs:{"role":"button","title":"Refresh"},on:{"click":function($event){$event.preventDefault();return _vm.$emit('bgs-widget-stats-refresh')}}},[_c('i',{staticClass:"fa fa-refresh"})])]},proxy:true}],null,true)},[(_vm.employees.items.length)?[_c('bgs-widget-stats-employees',{attrs:{"items":_vm.employees.items}})]:_vm._e()],2)}
-var DatePaymentByContractExpirevue_type_template_id_4869cdbf_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"741fdb3f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/widgets/stats/DatePaymentByContractExpire.vue?vue&type=template&id=1e342301&
+var DatePaymentByContractExpirevue_type_template_id_1e342301_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('bgs-widget-stats-card',{staticClass:"col-xs-12 col-sm-4 col-md-3",attrs:{"showTree":_vm.showTree,"header":_vm.employees.header,"subheader":_vm.employees.subheader,"loader":_vm.loader},scopedSlots:_vm._u([(_vm.card && !_vm.loader)?{key:"employee-card",fn:function(){return [_c('bgs-widget-stats-employee-card',{class:_vm.cardClass,attrs:{"header":_vm.card.header,"link":_vm.card.link},scopedSlots:_vm._u([(_vm.card.subheader)?{key:"subheader",fn:function(){return [_c('p',[_vm._v(_vm._s(_vm.card.subheader))])]},proxy:true}:null],null,true)})]},proxy:true}:null,{key:"buttons",fn:function(){return [_c('span',{staticClass:"info-box-toolbar-button hover-translucent employee-statistics-refresh-button",attrs:{"role":"button","title":"Refresh"},on:{"click":function($event){$event.preventDefault();return _vm.$emit('bgs-widget-stats-refresh')}}},[_c('i',{staticClass:"fa fa-refresh"})])]},proxy:true}],null,true)},[(_vm.employees.items.length)?[_c('bgs-widget-stats-employees',{attrs:{"items":_vm.employees.items}})]:_vm._e()],2)}
+var DatePaymentByContractExpirevue_type_template_id_1e342301_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/widgets/stats/DatePaymentByContractExpire.vue?vue&type=template&id=4869cdbf&
+// CONCATENATED MODULE: ./src/components/widgets/stats/DatePaymentByContractExpire.vue?vue&type=template&id=1e342301&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/widgets/stats/DatePaymentByContractExpire.vue?vue&type=script&lang=js&
 //
@@ -1814,6 +1814,10 @@ var DatePaymentByContractExpirevue_type_template_id_4869cdbf_staticRenderFns = [
         return ["bg-maroon"];
       }
 
+      if (this.card.type === "warning") {
+        return ["bg-yellow"];
+      }
+
       return ["bg-green"];
     }
   },
@@ -1843,8 +1847,8 @@ var DatePaymentByContractExpirevue_type_template_id_4869cdbf_staticRenderFns = [
 
 var DatePaymentByContractExpire_component = normalizeComponent(
   stats_DatePaymentByContractExpirevue_type_script_lang_js_,
-  DatePaymentByContractExpirevue_type_template_id_4869cdbf_render,
-  DatePaymentByContractExpirevue_type_template_id_4869cdbf_staticRenderFns,
+  DatePaymentByContractExpirevue_type_template_id_1e342301_render,
+  DatePaymentByContractExpirevue_type_template_id_1e342301_staticRenderFns,
   false,
   null,
   null,
