@@ -108,20 +108,24 @@
 </template>
 
 <script>
+  import axios from "axios";
+
+  let token = "";
+
+  axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+
   export default {
+    name: "app",
+
     data() {
       return {
-        card: {
-          header: "header",
-          subheader: "sub",
-          link: { href: "link", title: "title" }
-        },
+        card: null,
         employees: {
-          header: "header",
-          subheader: "sub",
           items: []
         },
-        loader: false
+        loader: false,
+        date: new Date().toISOString().split("T")[0],
+        userId: 1
       };
     },
 
@@ -130,97 +134,51 @@
     },
 
     methods: {
-      itemClick(item) {},
-      collapse(item) {},
-      cardClick(e) {},
+      itemClick() {},
+      collapse() {},
+      cardClick() {},
+      error(message) {
+        this.card = {
+          header: `Error: ${message}`,
+          type: "error"
+        };
+      },
       refresh() {
         this.load();
       },
-      load() {
+      async load() {
         this.loader = true;
 
-        setTimeout(() => {
-          this.employees.items = this.getItems();
+        try {
+          let response = await axios.get(
+            `http://bgs-auth.local/api/widget/payment-by-contract-expire/${
+              this.userId
+            }`,
+            {
+              params: {
+                "filter[paid]": false,
+                "filter[date_of_payment_by_contract_before]": this.date
+              }
+            }
+          );
 
-          this.loader = false;
-        }, 1000);
-      },
-      getItems() {
-        return [
-          {
-            id: 1, // уникальный id
-            active: true, // флаг активности
-            collapsed: false, // показывать развёрнутым (показывать список сотрудников)
-            avatar: "foto.jpg", // Аватарка
-            name: "Name 1", // Имя
-            data: "Data", // Данные для показа
-            collapsed_data: "expanded", // Данные, которые будут показаны при раскрытом списке сотрудников
-            other: [1, 2, 3], // любые другие данные, необязательно other
-            items: [
-              // Вложенные элементы
-              {
-                id: 2,
-                active: false,
-                collapsed: false,
-                avatar: "cb59bc5fefe8bab6abf2fbc2e93eb208/gDAc5YF0mgY.jpg",
-                name: "Name 12",
-                data: "text"
-              },
-              {
-                id: 3,
-                active: true,
-                collapsed: false,
-                avatar: "MAKJOEIRd9c.jpg",
-                name: "Name 13",
-                data: "text"
-              }
-            ],
-            // группа элементов вне иерархии, элементы, которые под чертой
-            disabledItems: [
-              {
-                id: 122, // уникальный id
-                avatar: "MAKJOEIRd9c.jpg", // Аватарка
-                name: "Name" // Имя
-              }
-            ]
-          },
-          {
-            id: 51,
-            active: true,
-            collapsed: false,
-            avatar: "IMG_1402.png",
-            name: "Name 14",
-            data: "data",
-            items: [
-              {
-                id: 52,
-                active: true,
-                collapsed: false,
-                avatar: "%D0%BE%D0%B3.png",
-                name: "Name 15",
-                data: "data",
-                items: [
-                  {
-                    id: 53,
-                    active: true,
-                    collapsed: false,
-                    avatar: "xgFmfkZaEHg.jpg",
-                    name: "Name 152",
-                    data: "data"
-                  },
-                  {
-                    id: 54,
-                    active: false,
-                    collapsed: false,
-                    avatar: "IMG_0257-10-09-18-02-17.JPG",
-                    name: "Name 1ваы",
-                    data: "data"
-                  }
-                ]
-              }
-            ]
+          if (response.status === 200) {
+            let { card, items } = response.data.data;
+            this.employees.items = items;
+
+            if (card) {
+              this.card = {
+                header: card.value,
+                subheader: "Total overdue sum",
+                type: card.value ? "danger" : null
+              };
+            }
           }
-        ];
+        } catch (error) {
+          this.error(error.response.statusText);
+        }
+
+        this.loader = false;
       }
     }
   };
