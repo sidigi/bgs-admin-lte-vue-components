@@ -1,6 +1,7 @@
 <template>
   <bgs-widget-stats-card
     :showTree="showTree"
+    :lineClass="cardClass"
     :header="employees.header"
     :subheader="employees.subheader"
     :loader="loader"

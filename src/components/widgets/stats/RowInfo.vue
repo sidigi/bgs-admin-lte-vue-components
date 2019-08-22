@@ -15,9 +15,19 @@
         @click.prevent.stop="$emit('row-item-click')"
       ></span>
     </div>
-    <div class="employee-info">
-      <template v-if="hasExpandedData">{{ collapsed_data }}</template>
-      <template v-else>{{ data }}</template>
+    <div class="employee-info flexbox">
+      <div class="flex-1">{{name}}</div>
+
+      <template v-if="hasExpandedData">
+        <div class="flex-align-flexstart">
+          <div class="font-large text-grey">{{ collapsed_data }}</div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="flex-align-flexstart team-statistics">
+          <div class="font-large text-grey">{{ data }}</div>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -85,6 +95,9 @@ export default {
   padding-left: 20px;
   margin-left: -20px;
   flex-wrap: nowrap;
+
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 7px;
 }
 .employee.employee-inactive .employee-photo {
   filter: grayscale(1) opacity(0.6);
@@ -133,4 +146,11 @@ export default {
 .display-block {
   display: block !important;
 }
-</style>
+.text-grey {
+  color: #bbb;
+}
+.font-large {
+  font-size: large;
+  line-height: 1;
+}
+</style> 

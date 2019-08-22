@@ -29,7 +29,7 @@ export default {
 .employees-list {
   position: relative;
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
   padding-left: 20px;
 }

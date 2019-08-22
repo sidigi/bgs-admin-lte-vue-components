@@ -1,3 +1,5 @@
+import "./assets/flexbox-util.css";
+
 import CardWidget from "./components/widgets/stats/CardWidget";
 import Employees from "./components/widgets/stats/ListWrapper";
 import EmployeeList from "./components/widgets/stats/List";

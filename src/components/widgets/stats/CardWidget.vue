@@ -38,7 +38,7 @@ export default {
     },
     lineClass: {
       type: String,
-      default: "bg-aqua"
+      default: "bg-green"
     },
     loader: {
       type: Boolean,
