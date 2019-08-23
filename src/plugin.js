@@ -5,6 +5,9 @@ import Employees from "./components/widgets/stats/ListWrapper";
 import EmployeeList from "./components/widgets/stats/List";
 import Card from "./components/widgets/stats/Card";
 import DatePaymentByContractExpire from "./components/widgets/stats/DatePaymentByContractExpire";
+import DataTable from "./components/UI/DataTable";
+import Modal from "./components/UI/Modal";
+import Loader from "./components/Loader";
 
 const bgsAdminLteVueUIComponents = {
   install(Vue) {
@@ -16,6 +19,9 @@ const bgsAdminLteVueUIComponents = {
       "bgs-widget-payment-by-contract-expire",
       DatePaymentByContractExpire
     );
+    Vue.component("bgs-ui-data-table", DataTable);
+    Vue.component("bgs-ui-modal", Modal);
+    Vue.component("bgs-ui-loader", Loader);
 
     Vue.prototype.$bgsComponentsEventBus = new Vue();
   }

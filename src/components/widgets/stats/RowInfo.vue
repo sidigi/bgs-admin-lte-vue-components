@@ -3,7 +3,7 @@
     class="employee"
     :class="employeeClass"
     :data-toggle="isParent ? 'collapse' : ''"
-    @click.prevent.stop="$emit('item-collapse', !collapsed)"
+    @click.prevent.stop="(isParent) ? $emit('item-collapse', !collapsed) : null"
   >
     <div class="employee-photo employee-show-detailed-statistics">
       <span
@@ -16,15 +16,15 @@
       ></span>
     </div>
     <div class="employee-info flexbox">
-      <div class="flex-1">{{name}}</div>
+      <div class="flex-align-flexstart" @click.prevent.stop="$emit('row-item-click')">{{name}}</div>
 
       <template v-if="hasExpandedData">
-        <div class="flex-align-flexstart">
+        <div class="flex-1" style="text-align:right">
           <div class="font-large text-grey">{{ collapsed_data }}</div>
         </div>
       </template>
       <template v-else>
-        <div class="flex-align-flexstart team-statistics">
+        <div class="flex-1 team-statistics" style="text-align:right">
           <div class="font-large text-grey">{{ data }}</div>
         </div>
       </template>

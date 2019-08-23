@@ -37,7 +37,7 @@ export default {
       default: ""
     },
     lineClass: {
-      type: String,
+      type: [String, Array],
       default: "bg-green"
     },
     loader: {
