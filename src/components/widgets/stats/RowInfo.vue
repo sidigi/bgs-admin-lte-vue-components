@@ -24,7 +24,7 @@
         </div>
       </template>
       <template v-else>
-        <div class="flex-1 team-statistics" style="text-align:right">
+        <div class="flex-1" style="text-align:right">
           <div class="font-large text-grey">{{ data }}</div>
         </div>
       </template>
