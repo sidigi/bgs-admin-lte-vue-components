@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .modal {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3) !important;
 }
 .close {
   outline: none;
