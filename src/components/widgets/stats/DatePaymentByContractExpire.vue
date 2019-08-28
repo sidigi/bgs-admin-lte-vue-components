@@ -5,7 +5,6 @@
     :header="employees.header"
     :subheader="employees.subheader"
     :loader="loader"
-    class="col-xs-12 col-sm-4 col-md-3"
   >
     <template v-slot:employee-card v-if="card && !loader">
       <bgs-widget-stats-employee-card :header="card.header" :link="card.link" :class="cardClass">
