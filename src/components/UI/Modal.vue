@@ -71,6 +71,9 @@ export default {
 </script>
 
 <style scoped>
+.modal {
+  background: rgba(0, 0, 0, 0.3);
+}
 .close {
   outline: none;
   margin-top: -10px;
