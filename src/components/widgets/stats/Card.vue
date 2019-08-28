@@ -53,11 +53,7 @@ export default {
       return !Array.isArray(obj) && obj - parseFloat(obj) + 1 >= 0;
     },
     click(e) {
-      this.$bgsComponentsEventBus.$emit(
-        "_bgs-widget-stats-employee-card-click",
-        e
-      );
-      this.$emit("bgs-widget-stats-employee-card-click", e);
+      this.$emit("card-click", e);
     }
   },
 

@@ -7,7 +7,12 @@
     :loader="loader"
   >
     <template v-slot:employee-card v-if="card && !loader">
-      <bgs-widget-stats-employee-card :header="card.header" :link="card.link" :class="cardClass">
+      <bgs-widget-stats-employee-card
+        :header="card.header"
+        :link="card.link"
+        :class="cardClass"
+        @card-click="cardClick"
+      >
         <template v-slot:subheader v-if="card.subheader">
           <p>{{ card.subheader }}</p>
         </template>
@@ -26,7 +31,11 @@
     </template>
 
     <template v-if="employees.items.length">
-      <bgs-widget-stats-employees :items="employees.items"></bgs-widget-stats-employees>
+      <bgs-widget-stats-employees
+        :items="employees.items"
+        @item-click="itemClick"
+        @item-collapse="itemCollapse"
+      ></bgs-widget-stats-employees>
     </template>
   </bgs-widget-stats-card>
 </template>
@@ -46,6 +55,18 @@ export default {
     }
   },
 
+  methods: {
+    itemClick(item) {
+      this.$emit("bgs-widget-stats-item-click", item);
+    },
+    itemCollapse(item) {
+      this.$emit("bgs-widget-stats-item-collapse", item);
+    },
+    cardClick(e) {
+      this.$emit("bgs-widget-stats-employee-card-click", e);
+    }
+  },
+
   computed: {
     showTree() {
       return Boolean(this.employees.items.length);
@@ -61,23 +82,6 @@ export default {
 
       return ["bg-green"];
     }
-  },
-
-  mounted() {
-    this.$bgsComponentsEventBus.$on("_bgs-widget-stats-item-click", payLoad => {
-      this.$emit("bgs-widget-stats-item-click", payLoad);
-    });
-
-    this.$bgsComponentsEventBus.$on("_bgs-widget-stats-collapse", payLoad => {
-      this.$emit("bgs-widget-stats-collapse", payLoad);
-    });
-
-    this.$bgsComponentsEventBus.$on(
-      "_bgs-widget-stats-employee-card-click",
-      payLoad => {
-        this.$emit("bgs-widget-stats-employee-card-click", payLoad);
-      }
-    );
   }
 };
 </script>

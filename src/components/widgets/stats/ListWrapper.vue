@@ -1,7 +1,12 @@
 <template>
   <div class="employees-list" v-if="items && items.length">
     <template v-for="item in items">
-      <bgs-widget-stats-employee-list :key="item.id" :item="item"></bgs-widget-stats-employee-list>
+      <bgs-widget-stats-employee-list
+        :key="item.id"
+        :item="item"
+        @item-click="itemClick"
+        @item-collapse="itemCollapse"
+      ></bgs-widget-stats-employee-list>
     </template>
   </div>
 </template>
@@ -18,7 +23,14 @@ export default {
       }
     }
   },
-
+  methods: {
+    itemClick(item) {
+      this.$emit("item-click", item);
+    },
+    itemCollapse(item) {
+      this.$emit("item-collapse", item);
+    }
+  },
   components: {
     BgsWidgetStatsEmployeeList
   }

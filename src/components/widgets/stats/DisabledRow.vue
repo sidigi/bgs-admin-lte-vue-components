@@ -28,7 +28,7 @@ export default {
 
   methods: {
     itemClick() {
-      this.$bgsComponentsEventBus.$emit("_bgs-widget-stats-item-click", {
+      this.$emit("item-click", {
         id: this.id,
         name: this.name,
         avatar: this.avatar

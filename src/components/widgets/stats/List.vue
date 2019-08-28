@@ -9,13 +9,19 @@
       :collapsed_data="item.collapsed_data"
       :collapsed="item.collapsed"
       :active="item.active"
-      @item-collapse="collapse"
-      @row-item-click="itemClick"
+      @item-collapse="itemCollapse"
+      @item-click="itemClick(item)"
     ></bgs-widget-stats-employee-info>
 
     <transition v-if="item.items" name="fadeHeight" mode="out-in">
       <div class="employees-list" v-show="item.collapsed">
-        <bgs-widget-stats-employee-list v-for="item in item.items" :key="item.id" :item="item"></bgs-widget-stats-employee-list>
+        <bgs-widget-stats-employee-list
+          v-for="item in item.items"
+          :key="item.id"
+          :item="item"
+          @item-click="itemClick(item)"
+          @item-collapse="itemCollapse"
+        ></bgs-widget-stats-employee-list>
       </div>
     </transition>
 
@@ -26,7 +32,7 @@
       :data="item.data"
       :collapsed_data="item.collapsed_data"
       :active="item.active"
-      @row-item-click="itemClick"
+      @item-click="itemClick(item)"
     ></bgs-widget-stats-employee-info>
 
     <div class="employees-list-offline" v-if="item.disabledItems">
@@ -59,19 +65,13 @@ export default {
   },
 
   methods: {
-    collapse(value) {
+    itemCollapse(value) {
       this.item.collapsed = value;
 
-      this.$bgsComponentsEventBus.$emit(
-        "_bgs-widget-stats-collapse",
-        this.item
-      );
+      this.$emit("item-collapse", this.item);
     },
-    itemClick() {
-      this.$bgsComponentsEventBus.$emit(
-        "_bgs-widget-stats-item-click",
-        this.item
-      );
+    itemClick(item) {
+      this.$emit("item-click", item);
     }
   }
 };

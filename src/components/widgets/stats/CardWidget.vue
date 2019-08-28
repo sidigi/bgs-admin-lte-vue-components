@@ -52,16 +52,6 @@ export default {
 
   components: {
     Loader
-  },
-
-  mounted() {
-    this.$bgsComponentsEventBus.$on("_bgs-widget-stats-item-click", payLoad => {
-      this.$emit("bgs-widget-stats-item-click", payLoad);
-    });
-
-    this.$bgsComponentsEventBus.$on("_bgs-widget-stats-collapse", payLoad => {
-      this.$emit("bgs-widget-stats-collapse", payLoad);
-    });
   }
 };
 </script>

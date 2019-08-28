@@ -22,8 +22,6 @@ const bgsAdminLteVueUIComponents = {
     Vue.component("bgs-ui-data-table", DataTable);
     Vue.component("bgs-ui-modal", Modal);
     Vue.component("bgs-ui-loader", Loader);
-
-    Vue.prototype.$bgsComponentsEventBus = new Vue();
   }
 };
 

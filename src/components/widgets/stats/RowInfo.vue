@@ -3,7 +3,7 @@
     class="employee"
     :class="employeeClass"
     :data-toggle="isParent ? 'collapse' : ''"
-    @click.prevent.stop="(isParent) ? $emit('item-collapse', !collapsed) : null"
+    @click.prevent.stop="itemCollapse"
   >
     <div class="employee-photo employee-show-detailed-statistics">
       <span
@@ -12,11 +12,11 @@
         :data-original-title="name"
         data-toggle="tooltip"
         data-container="body"
-        @click.prevent.stop="$emit('row-item-click')"
+        @click.prevent.stop="itemClick($event)"
       ></span>
     </div>
     <div class="employee-info flexbox">
-      <div class="flex-align-flexstart" @click.prevent.stop="$emit('row-item-click')">{{name}}</div>
+      <div class="flex-align-flexstart" @click.prevent.stop="itemClick($event)">{{name}}</div>
 
       <template v-if="hasExpandedData">
         <div class="flex-1" style="text-align:right">
@@ -62,6 +62,17 @@ export default {
     avatar: {
       type: [String],
       default: ""
+    }
+  },
+
+  methods: {
+    itemClick(e) {
+      e.stopPropagation();
+
+      this.$emit("item-click");
+    },
+    itemCollapse() {
+      this.isParent ? this.$emit("item-collapse", !this.collapsed) : null;
     }
   },
 
