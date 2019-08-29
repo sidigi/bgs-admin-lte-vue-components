@@ -10,7 +10,7 @@
       <i class="ion" :class="iconClass"></i>
     </div>
 
-    <a :href="link.href" class="small-box-footer" @click="click">
+    <a :href="link.href" class="small-box-footer" @click="click" v-if="link.show">
       {{ link.title || 'More info'}}
       <i class="fa fa-arrow-circle-right"></i>
     </a>

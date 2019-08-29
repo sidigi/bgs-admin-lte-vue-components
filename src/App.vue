@@ -65,7 +65,8 @@ export default {
       .split("T")[0];
 
     //axios
-    const token = "";
+    const token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImVmYmMzY2NkOGQwNzJhMGM1NWUxNWM4MTllOWMzYmQ5NDg1MTI4MGVkMTBiNzk4MDNjZGUzOGM3NzRjZmRjMjc0NzYzODMxNGMyMzRmZjlmIn0.eyJhdWQiOiIzIiwianRpIjoiZWZiYzNjY2Q4ZDA3MmEwYzU1ZTE1YzgxOWU5YzNiZDk0ODUxMjgwZWQxMGI3OTgwM2NkZTM4Yzc3NGNmZGMyNzQ3NjM4MzE0YzIzNGZmOWYiLCJpYXQiOjE1NjcwNjkxMTYsIm5iZiI6MTU2NzA2OTExNiwiZXhwIjoxNTY3MTU1NTE2LCJzdWIiOiIiLCJzY29wZXMiOltdfQ.Ma-4xX1xHIPyHs1FqNfKJYYjbKA1TO7zUCdPLzQIIE5vaC-aDsBnLQ4dSbM0a28lQUf3TaMZ7orBfyncdGyhO0LSt4NJWWI2tJKl1U0WINkZoXtFCd4vF5bTY3aqeeFUn4yiHk2bymUDDDRRMv64BXWowf95uflLloOXigTMrDIZe7g1-S2IY_jtEeyG3EXmWHlpzvPwCqBtsDm8tjtNoSN90EBXPmiOsGTZj7Th3oq9GQyCJYeJWRcwey7nG9KCnUOmDvnUMOmvSpbtGA7cbjAAsQzN0bQc211xq_wYOtPFNDtsiL3AHWfEyrURQ6_BVBtKWe5wtoDQ7GSnyOf0_TVh4qgP3KOQxCslH0NSDw8OvV_kGNDOiiqv8LCKSB7fDXMbLvmaDJ31uaSOJsxpypV3o0TOD-C27usdfyH7g_SRwkEClsWrGb9z9YhrU4KEqyhRdpt7L_XK1MwAAho-uQEV6eafpR1SEjXBP3E6h43J2KGxXpBS-CC1WZfQZeQmtL9Q-1USW10AIBlheZvqV778i0wCCqsqNLbtVwV1nJPfGMPqI2B-rmWXArmbMOMMbTbDexvwTZIJdwxal3sStl9XOy798Qt0exfl1pZU9HCdv79AqI8bZn5lAJbTVDuCkvAD2prXHTggeTgkqTsBF2958nz41zdRzv341jl2ZQE";
 
     const apiAxios = axios.create();
     apiAxios.defaults.headers.common = { Authorization: `Bearer ${token}` };
@@ -192,7 +193,10 @@ export default {
 
           this.employee = employee;
           this.employees.items = items;
-          this.card.header = card.value;
+          this.card.header = this.$options.filters.moneyFormat(card.value);
+          this.card.link = {
+            show: card.more_info
+          };
         }
       } catch (error) {
         console.error(error);
