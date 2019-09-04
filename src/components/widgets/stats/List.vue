@@ -9,8 +9,8 @@
       :collapsed_data="item.collapsed_data"
       :collapsed="item.collapsed"
       :active="item.active"
-      @item-collapse="itemCollapse"
-      @item-click="itemClick(item)"
+      @item-collapse="itemCollapse(item, $event)"
+      @item-click="itemClick(item, false)"
     ></bgs-widget-stats-employee-info>
 
     <transition v-if="item.items" name="fadeHeight" mode="out-in">
@@ -20,7 +20,7 @@
           :key="item.id"
           :item="item"
           @item-click="itemClick(item)"
-          @item-collapse="itemCollapse"
+          @item-collapse="itemCollapse(item, $event)"
         ></bgs-widget-stats-employee-list>
       </div>
     </transition>
@@ -65,13 +65,21 @@ export default {
   },
 
   methods: {
-    itemCollapse(value) {
-      this.item.collapsed = value;
-
-      this.$emit("item-collapse", this.item);
+    itemCollapse(item, value) {
+      item.collapsed = value;
+      this.$emit("item-collapse", value, item);
     },
-    itemClick(item) {
-      this.$emit("item-click", item);
+    itemClick(item, val = true) {
+      let parent = this.getParent(this.$parent);
+
+      parent.$emit("item-click", item);
+    },
+    getParent(parent) {
+      if (!parent.item) {
+        return parent;
+      }
+
+      return this.getParent(parent.$parent);
     }
   }
 };

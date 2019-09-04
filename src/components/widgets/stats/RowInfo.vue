@@ -12,11 +12,11 @@
         :data-original-title="name"
         data-toggle="tooltip"
         data-container="body"
-        @click.prevent.stop="itemClick($event)"
+        @click.prevent.stop="itemClick"
       ></span>
     </div>
     <div class="employee-info flexbox">
-      <div class="flex-align-flexstart" @click.prevent.stop="itemClick($event)">{{name}}</div>
+      <div class="flex-align-flexstart" @click.prevent.stop="itemClick">{{name}}</div>
 
       <template v-if="hasExpandedData">
         <div class="flex-1" style="text-align:right">
@@ -34,6 +34,8 @@
 
 <script>
 export default {
+  name: "employee-info",
+
   props: {
     isParent: {
       type: [Boolean, Number],
@@ -66,9 +68,7 @@ export default {
   },
 
   methods: {
-    itemClick(e) {
-      e.stopPropagation();
-
+    itemClick() {
       this.$emit("item-click");
     },
     itemCollapse() {

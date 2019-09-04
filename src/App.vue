@@ -60,18 +60,21 @@ export default {
   name: "app",
   data() {
     //from what date calc
-    const date = this.addDays(new Date(), 0)
+    const date = new Date().toISOString().split("T")[0];
+
+    const curDate = this.addDays(new Date(), 7)
       .toISOString()
       .split("T")[0];
 
     //axios
     const token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImVmYmMzY2NkOGQwNzJhMGM1NWUxNWM4MTllOWMzYmQ5NDg1MTI4MGVkMTBiNzk4MDNjZGUzOGM3NzRjZmRjMjc0NzYzODMxNGMyMzRmZjlmIn0.eyJhdWQiOiIzIiwianRpIjoiZWZiYzNjY2Q4ZDA3MmEwYzU1ZTE1YzgxOWU5YzNiZDk0ODUxMjgwZWQxMGI3OTgwM2NkZTM4Yzc3NGNmZGMyNzQ3NjM4MzE0YzIzNGZmOWYiLCJpYXQiOjE1NjcwNjkxMTYsIm5iZiI6MTU2NzA2OTExNiwiZXhwIjoxNTY3MTU1NTE2LCJzdWIiOiIiLCJzY29wZXMiOltdfQ.Ma-4xX1xHIPyHs1FqNfKJYYjbKA1TO7zUCdPLzQIIE5vaC-aDsBnLQ4dSbM0a28lQUf3TaMZ7orBfyncdGyhO0LSt4NJWWI2tJKl1U0WINkZoXtFCd4vF5bTY3aqeeFUn4yiHk2bymUDDDRRMv64BXWowf95uflLloOXigTMrDIZe7g1-S2IY_jtEeyG3EXmWHlpzvPwCqBtsDm8tjtNoSN90EBXPmiOsGTZj7Th3oq9GQyCJYeJWRcwey7nG9KCnUOmDvnUMOmvSpbtGA7cbjAAsQzN0bQc211xq_wYOtPFNDtsiL3AHWfEyrURQ6_BVBtKWe5wtoDQ7GSnyOf0_TVh4qgP3KOQxCslH0NSDw8OvV_kGNDOiiqv8LCKSB7fDXMbLvmaDJ31uaSOJsxpypV3o0TOD-C27usdfyH7g_SRwkEClsWrGb9z9YhrU4KEqyhRdpt7L_XK1MwAAho-uQEV6eafpR1SEjXBP3E6h43J2KGxXpBS-CC1WZfQZeQmtL9Q-1USW10AIBlheZvqV778i0wCCqsqNLbtVwV1nJPfGMPqI2B-rmWXArmbMOMMbTbDexvwTZIJdwxal3sStl9XOy798Qt0exfl1pZU9HCdv79AqI8bZn5lAJbTVDuCkvAD2prXHTggeTgkqTsBF2958nz41zdRzv341jl2ZQE";
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFiMjI1MWU0NmU5NzhlNzA4OTgwZmM1OGQ0NzY5Y2Q4NDJlZDliMzRlZGE3NDhiMDAwN2E2Njc1ODhjNDJmMDZkNWFkODliYjljMjE2MmE3In0.eyJhdWQiOiIzIiwianRpIjoiYWIyMjUxZTQ2ZTk3OGU3MDg5ODBmYzU4ZDQ3NjljZDg0MmVkOWIzNGVkYTc0OGIwMDA3YTY2NzU4OGM0MmYwNmQ1YWQ4OWJiOWMyMTYyYTciLCJpYXQiOjE1Njc1ODEzNTYsIm5iZiI6MTU2NzU4MTM1NiwiZXhwIjoxNTY3NjY3NzU2LCJzdWIiOiIiLCJzY29wZXMiOltdfQ.fKr_M_FVe2WGEkhFnNbW2_-LNqP_iXEUiN2W2nSjkVzHg7ENk21Z-0NC4ZQKVwWnxTI7TDGGgiP8RY66f-5bGrK0wLi8I60Rp_QWo_GelGceiojPaWz7Nn5lSrVLg3OlWqOI5MOOhPfDe8oxUGhIs74M2ocoH0qPcG7GNCscayp_hW8utZR3uzXnKb93esLniT54Sol4-KJK8XOXOKzMjGjlo4SY2PvUZXAWeYbfr-yRWwJY1CGAOA8SNCl8YfdfzwC0sQbOXvU-HQ4zi22CqnswDPjluoldLXLIAL_sHDEcTa6f3qZWPoNM_T99DuZODg626APefSUquMXGz76BY4OzKZB06IsSarS6bNqbMVYCc60guXlQpJMM9CRI6g4Pl5AKN2_l-t0msN65R5_oppjpLxAS4sQlnHJcRp7PgukjGodU9WGLTVSBR9nWFksDL9CYI4RbjpT9v3KcD4_Cf6IsZe2DZNedR7GeZTQBX8Nn33H0Fzp3glzkAE2SD7_w5bcIgytaMN4bavMued5OORvR3vpVEtWUzrTu5au3ywRnqZdJnntJej17S1UqPnfEYoKwsuwkJPLvaIytoQCpMyOoRoFGmhIrkcjjV3_fH2l6CdF14ffdcG5dvX1YnkhjOu2fqfS_r_ls0CAbJ5eu8w95koQTlUAClFRzO-MQiCI";
 
     const apiAxios = axios.create();
     apiAxios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 
-    const userId = 1;
+    const userId = 17;
+
     return {
       axios: apiAxios,
       date: date,
@@ -79,12 +82,12 @@ export default {
       widgetUrl: `http://bgs-auth.local/api/widget/payment-by-contract-expire/${userId}`,
       widgetParams: {
         "filter[paid]": false,
-        "filter[date_of_payment_by_contract_before]": date
+        "filter[date_of_payment_by_contract_between]": `${date},${curDate}`
       },
       employeeDetailUrl: "http://bgs-auth.local/api/sale-payments",
       employeeDetailParams: {
         "filter[paid]": false,
-        "filter[date_of_payment_by_contract_before]": date,
+        "filter[date_of_payment_by_contract_between]": `${date},${curDate}`,
         include: "sale.event,sale.participant,sale.company"
       },
 
@@ -122,8 +125,8 @@ export default {
 
       card: {
         header: null,
-        subheader: "Total overdue sum",
-        type: "danger"
+        subheader: "Soon overdue sum",
+        type: "warning"
       },
 
       employees: {

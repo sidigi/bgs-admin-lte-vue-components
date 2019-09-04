@@ -25,10 +25,12 @@ export default {
   },
   methods: {
     itemClick(item) {
-      this.$emit("item-click", item);
+      if (!(Object.entries(item).length === 0 && item.constructor === Object)) {
+        this.$emit("item-click", item);
+      }
     },
-    itemCollapse(item) {
-      this.$emit("item-collapse", item);
+    itemCollapse(value, item) {
+      this.$emit("item-collapse", value, item);
     }
   },
   components: {

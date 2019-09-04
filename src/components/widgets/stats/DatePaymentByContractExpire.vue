@@ -59,8 +59,8 @@ export default {
     itemClick(item) {
       this.$emit("bgs-widget-stats-item-click", item);
     },
-    itemCollapse(item) {
-      this.$emit("bgs-widget-stats-item-collapse", item);
+    itemCollapse(value, item) {
+      this.$emit("bgs-widget-stats-item-collapse", value, item);
     },
     cardClick(e) {
       this.$emit("bgs-widget-stats-employee-card-click", e);
