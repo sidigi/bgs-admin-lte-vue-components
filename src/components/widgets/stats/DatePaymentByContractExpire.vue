@@ -44,15 +44,15 @@
 export default {
   props: {
     employees: {
-      type: [Object]
+      type: [Object],
     },
     card: {
-      type: [Object]
+      type: [Object],
     },
     loader: {
       type: [Boolean],
-      default: false
-    }
+      default: false,
+    },
   },
 
   methods: {
@@ -64,7 +64,7 @@ export default {
     },
     cardClick(e) {
       this.$emit("bgs-widget-stats-employee-card-click", e);
-    }
+    },
   },
 
   computed: {
@@ -72,6 +72,10 @@ export default {
       return Boolean(this.employees.items.length);
     },
     cardClass() {
+      if (this.card.type === "red") {
+        return ["bg-red"];
+      }
+
       if (this.card.type === "error" || this.card.type === "danger") {
         return ["bg-maroon"];
       }
@@ -81,7 +85,7 @@ export default {
       }
 
       return ["bg-green"];
-    }
-  }
+    },
+  },
 };
 </script>

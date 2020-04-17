@@ -73,7 +73,7 @@ export default {
     const apiAxios = axios.create();
     apiAxios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 
-    const userId = 17;
+    const userId = 23;
 
     return {
       axios: apiAxios,
